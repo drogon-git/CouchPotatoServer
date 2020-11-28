@@ -1,5 +1,6 @@
 from string import ascii_letters, digits
 from urllib import quote_plus
+from urllib import quote
 import os
 import re
 import traceback
@@ -129,6 +130,22 @@ def tryUrlencode(s):
         for letter in ss(s):
             try:
                 new += quote_plus(letter)
+            except:
+                new += letter
+
+    return new
+
+def tryUrlencodeQuoteOnly(s):
+    new = six.u('')
+    if isinstance(s, dict):
+        for key, value in s.items():
+            new += six.u('&%s=%s') % (key, tryUrlencode(value))
+
+        return new[1:]
+    else:
+        for letter in ss(s):
+            try:
+                new += quote(letter)
             except:
                 new += letter
 
