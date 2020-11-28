@@ -59,11 +59,12 @@ class Base(TorrentMagnetProvider):
             page += 1
 
             data = self.getHTMLData(search_url)
-            log.info('Data %s: ', data)
   
             if data:
                 try:
+                    log.info('Data %s: ', data)
                     soup = BeautifulSoup(data)
+                    log.info('Soup %s: ', soup)
                     results_table = soup.find('table', attrs = {'id': 'searchResult'})
 
                     if not results_table:
