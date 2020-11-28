@@ -74,6 +74,7 @@ class Base(TorrentMagnetProvider):
                         pass
 
                     entries = results_table.find_all('tr')
+                    log.info("Entries: %s", len(entries))
                     for result in entries[1:]:
                         link = result.find(href = re.compile('torrent\/\d+\/'))
                         download = result.find(href = re.compile('magnet:'))
