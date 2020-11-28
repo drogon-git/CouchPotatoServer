@@ -59,7 +59,8 @@ class Base(TorrentMagnetProvider):
             page += 1
 
             data = self.getHTMLData(search_url)
-
+            log.info('Data %s: ', data)
+  
             if data:
                 try:
                     soup = BeautifulSoup(data)
